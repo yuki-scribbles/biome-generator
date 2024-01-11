@@ -1,0 +1,23 @@
+body{
+    text-align:center;
+    color: white;
+    background-color: black;
+}
+
+Table{
+    border: 1px solid;
+    text-align: left;
+    margin: auto;
+}
+
+th, td {
+    padding: 5px; 
+}
+
+td{
+    width: 300px;
+    padding-left: 10px;
+}
+
+
+
