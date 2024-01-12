@@ -4,12 +4,14 @@ function boop() {
     let hazard = Math.random() * 100;
     resource; //+ Math.floor(Math.random() * 2);
     let affix = Math.random();
+    // boards;
     // depends on how many biomes. Do switch statement to choose biome
     //const biomes = ["Arid Wasteland", "Lush Rainforest", "Frozen Tundra", "Volcanic Caldera", "Underwater Abyss", 
     //                "Crystalline Caves", "Toxic Swamp", "Mountainous Badlands", "Subterranean Tunnels"];
     switch(biome) {
         case 0:
             biome = "Arid Wasteland";
+            // let boards = ["A","C"];
             break;
         case 1:
           // code block
@@ -90,5 +92,13 @@ function boop() {
     document.getElementById("biome").innerHTML = biome;
     document.getElementById("hazard").innerHTML = hazard;
     document.getElementById("resource").innerHTML = resource;
+    // document.getElementById("gameBoards").innerHTML = 
+    document.getElementById("D3").innerHTML = "x";
+    document.getElementById("A1").innerHTML = "o";
+  }
 
+  function render(){
+    let row = "row" + "A";
+    let col = "col" + 1;
+    document.getElementsByClassName("col1").innerHTML = x;
   }

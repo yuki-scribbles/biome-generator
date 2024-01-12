@@ -8,7 +8,7 @@
 
         <h1>Biome Generator</h1>
         <div id = "infoBar">
-            <table id = "infoTable">
+            <table class = "infoTable">
                 <tr>
                     <th>Biome</th>
                     <td id = "biome"> </td>
@@ -25,11 +25,54 @@
                     <th>Hazard Level Modifier</th>
                     <td id = "hazard"> </td>
                 </tr>
+                <tr>
+                    <th>Game Board</th>
+                    <td id = "gameBoards"></td>
+                </tr>
 
             </table>
         </div>
         <button onclick="boop()">Generate</button> 
         
+        <div>
+            <table class = "board">
+                <tr id = "num">
+                    <th> </th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td id = "A1"></td>
+                    <td id = "A2"></td>
+                    <td id = "A3"></td>
+                    <td id = "A4"> </td>
+                </tr>
+                <tr class = "rowB">
+                    <td>B</td>
+                    <td id = "B1"> </td>
+                    <td id = "B2"> </td>
+                    <td id = "B3"> </td>
+                    <td id = "B4"> </td>
+                </tr>
+                <tr class = "rowC">
+                    <td>C</td>
+                    <td id = "C1"> </td>
+                    <td id = "C2"> </td>
+                    <td id = "C3"> </td>
+                    <td id = "C4"> </td>
+                </tr>
+                <tr class = "rowD">
+                    <td>D</td>
+                    <td id = "D1"> </td>
+                    <td id = "D2"> </td>
+                    <td id = "D3"> </td>
+                    <td id = "D4"> </td>
+                </tr>
+            </table>
+        </div>
 
     </body>
     <script src = "main.js"></script>

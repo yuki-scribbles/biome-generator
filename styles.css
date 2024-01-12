@@ -1,24 +1,37 @@
 body{
     text-align:center;
     color: white;
-    background-color: black;
+    background-color: rgb(20, 20, 20);
 }
 
-Table{
+table, th, td{
     border: 1px solid;
+    border-collapse: collapse;
+}
+
+
+.infoTable {
     text-align: left;
     margin: auto;
     margin-bottom: 20px;
 }
 
-th, td {
+.infoTable th{
     padding: 5px; 
 }
 
-td{
+.infoTable td{
     width: 300px;
+    padding: 5px;
     padding-left: 10px;
 }
+
+.board th, .board td{
+    width: 50px;
+    height: 50px;
+} 
+
+
 
 
 
