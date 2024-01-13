@@ -4,11 +4,12 @@ function boop() {
     let biome = Math.floor(Math.random() * 15);
     let hazard = Math.random() * 100;
     let resource; //+ Math.floor(Math.random() * 2);
-    let affix = Math.random();
+    let numAffixes;
+    let chosenAffixes = [];
 
     //const biomes = ["Arid Wasteland", "Lush Rainforest", "Frozen Tundra", "Volcanic Caldera", "Underwater Abyss", 
     //                "Crystalline Caves", "Toxic Swamp", "Mountainous Badlands", "Subterranean Tunnels"];
-    const hazards = ["Harsh Habitality", "Infections & Insects", "Lmited Visibility", "Electronics Malfunctions", "Limited Communication", 
+    const Affixes = ["Harsh Habitality", "Infections & Insects", "Lmited Visibility", "Electronics Malfunctions", "Limited Communication", 
                       "Gentle Giants", "Corrosive Environment", "Biomimicry", "Carnivorous Flora", "Weak Structures", "Malleable Landscape",
                       "Rich Deposits", "Abundant Specimens", "Other Crews’ Remnants"];
 
@@ -80,7 +81,6 @@ function boop() {
 
     biome = biomes[biome];
 
-
     if(hazard < 7.5){
         hazard = -2;
     } else if (hazard < 25){
@@ -92,8 +92,32 @@ function boop() {
     } else {
         hazard = 2;
     }
-    
     resource = hazard;
+
+    numAffixes = Math.random() * 100;
+    if(numAffixes < 25){
+      numAffixes = 0;
+    } else if (numAffixes < 75){
+      numAffixes = 1;
+    } else {
+      numAffixes = 2;
+    }
+    
+    if(numAffixes >= 1){
+      let num = Affixes[Math.floor(Math.random()*biome.affix.length)];
+      chosenAffixes.push(num);
+    }
+    if(numAffixes == 2){
+      chosenAffixes.push(Affixes[Math.floor(Math.random()*biome.affix.length)]);
+      while(chosenAffixes[1] == chosenAffixes[0]){
+          num = Math.floor(Math.random()*biome.affix.length);
+          chosenAffixes[1] = num;
+      }
+    }
+    chosenAffixes
+    
+    
+  
 
     for(let i = 1; i < 5; i ++){
       document.getElementById("A" + i).innerHTML = "";
@@ -102,14 +126,14 @@ function boop() {
       document.getElementById("D" + i).innerHTML = "";
     }
 
+    //set up board size and populate with items
     let board = Math.floor(Math.random()*biome.boardSize.length);
     board = biome.boardSize[board];
-    // size = board.charCodeAt(0) - 64;
-    size = 4;
-    // let coordinate;
+    size = 4; //change later based on board size
     let resources = [];
     let row;
     let column;
+    //change 5 based on level
     for(let i = resource + 5; i > 0; i --){
       row = String.fromCharCode(Math.floor(Math.random()*size) + 65);
       column = Math.floor(Math.random()*size) + 1;
@@ -124,24 +148,16 @@ function boop() {
 
     document.getElementById("biome").innerHTML = biome.name;
     document.getElementById("Effects").innerHTML = biome.effect;
-    document.getElementById("Affixes").innerHTML = biome.affix;
+    document.getElementById("Affixes").innerHTML = chosenAffixes;
     document.getElementById("resource").innerHTML = resource;
     document.getElementById("hazard").innerHTML = hazard;
     document.getElementById("gameBoards").innerHTML = board;
 
-    render(resources);
+    // render(resources);
     // document.getElementById("D3").innerHTML = "x";
     // document.getElementById("A1").innerHTML = "o";
 
   }
-
-  // function render(resources){
-  //   // let coordinate;
-  //   for (let item in resources){
-  //     // id = String.fromCharCode(coordinate[0] + 65) + (coordinate[1] + 1);
-  //     document.getElementById(item.coordinates).innerHTML = item.symbol;
-  //   }
-  // }
 
   function Biome(name, effect, affix, boardSize) {
     this.name = name;
