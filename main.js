@@ -1,8 +1,9 @@
 function boop() {
     //generating values for each attribute
+    //let level = ...; will be base value for all of the other values
     let biome = Math.floor(Math.random() * 15);
     let hazard = Math.random() * 100;
-    let resource = hazard; //+ Math.floor(Math.random() * 2);
+    let resource; //+ Math.floor(Math.random() * 2);
     let affix = Math.random();
 
     //const biomes = ["Arid Wasteland", "Lush Rainforest", "Frozen Tundra", "Volcanic Caldera", "Underwater Abyss", 
@@ -79,23 +80,46 @@ function boop() {
 
     biome = biomes[biome];
 
+
     if(hazard < 7.5){
         hazard = -2;
-        resource = -2;
     } else if (hazard < 25){
         hazard = -1;
-        resource = -1;
     } else if (hazard < 75){
         hazard = 0;
-        resource = 0;
     } else if (hazard < 92.5){
         hazard = 1;
-        resource = 1;
     } else {
         hazard = 2;
-        resource = 2;
+    }
+    
+    resource = hazard;
+
+    for(let i = 1; i < 5; i ++){
+      document.getElementById("A" + i).innerHTML = "";
+      document.getElementById("B" + i).innerHTML = "";
+      document.getElementById("C" + i).innerHTML = "";
+      document.getElementById("D" + i).innerHTML = "";
     }
 
+    let board = Math.floor(Math.random()*biome.boardSize.length);
+    board = biome.boardSize[board];
+    // size = board.charCodeAt(0) - 64;
+    size = 4;
+    // let coordinate;
+    let resources = [];
+    let row;
+    let column;
+    for(let i = resource + 5; i > 0; i --){
+      row = String.fromCharCode(Math.floor(Math.random()*size) + 65);
+      column = Math.floor(Math.random()*size) + 1;
+      while(document.getElementById(row + column).innerHTML != ""){
+        row = String.fromCharCode(Math.floor(Math.random()*size) + 65);
+        column = Math.floor(Math.random()*size) + 1;
+      }
+      resources.push(new Item("*", row + column));
+      document.getElementById(row + column).innerHTML = resources[resources.length - 1].symbol;
+    }
 
 
     document.getElementById("biome").innerHTML = biome.name;
@@ -103,20 +127,30 @@ function boop() {
     document.getElementById("Affixes").innerHTML = biome.affix;
     document.getElementById("resource").innerHTML = resource;
     document.getElementById("hazard").innerHTML = hazard;
-    document.getElementById("gameBoards").innerHTML = biome.boardSize;
-    document.getElementById("D3").innerHTML = "x";
-    document.getElementById("A1").innerHTML = "o";
+    document.getElementById("gameBoards").innerHTML = board;
+
+    render(resources);
+    // document.getElementById("D3").innerHTML = "x";
+    // document.getElementById("A1").innerHTML = "o";
+
   }
 
-  function render(){
-    let row = "row" + "A";
-    let col = "col" + 1;
-    document.getElementsByClassName("col1").innerHTML = x;
-  }
+  // function render(resources){
+  //   // let coordinate;
+  //   for (let item in resources){
+  //     // id = String.fromCharCode(coordinate[0] + 65) + (coordinate[1] + 1);
+  //     document.getElementById(item.coordinates).innerHTML = item.symbol;
+  //   }
+  // }
 
   function Biome(name, effect, affix, boardSize) {
     this.name = name;
     this.effect = effect;
     this.affix = affix;
     this.boardSize = boardSize;
+  }
+
+  function Item(symbol, coordinates){
+    this.symbol = symbol;
+    this.coordinates = coordinates;
   }
