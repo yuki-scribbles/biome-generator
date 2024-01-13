@@ -17,6 +17,7 @@ table, th, td{
 }
 
 .infoTable th{
+    width: 150px;
     padding: 5px; 
 }
 
@@ -26,6 +27,9 @@ table, th, td{
     padding-left: 10px;
 }
 
+.board {
+    margin: auto;
+}
 .board th, .board td{
     width: 50px;
     height: 50px;

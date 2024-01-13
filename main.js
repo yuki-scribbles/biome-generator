@@ -126,7 +126,6 @@ function boop() {
     let resources = [];
     let row;
     let column;
-    //change size based on level
 
     //clear board
     for(let i = 1; i < 8; i ++){
