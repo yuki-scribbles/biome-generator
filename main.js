@@ -117,24 +117,25 @@ function boop() {
     }
     chosenAffixes
     
-    
   
-
-    for(let i = 1; i < 5; i ++){
-      document.getElementById("A" + i).innerHTML = "";
-      document.getElementById("B" + i).innerHTML = "";
-      document.getElementById("C" + i).innerHTML = "";
-      document.getElementById("D" + i).innerHTML = "";
-    }
 
     //set up board size and populate with items
     let board = Math.floor(Math.random()*biome.boardSize.length);
     board = biome.boardSize[board];
-    size = 4; //change later based on board size
+    size = 7; //change later based on board size
     let resources = [];
     let row;
     let column;
-    //change 5 based on level
+    //change size based on level
+
+    //clear board
+    for(let i = 1; i < 8; i ++){
+      for(let j = 65; j < 72; j ++){
+        document.getElementById(String.fromCharCode(j) + i).innerHTML = "";
+      }
+    }
+
+    //populate board with resources
     for(let i = resource + 5; i > 0; i --){
       row = String.fromCharCode(Math.floor(Math.random()*size) + 65);
       column = Math.floor(Math.random()*size) + 1;
@@ -146,17 +147,13 @@ function boop() {
       document.getElementById(row + column).innerHTML = resources[resources.length - 1].symbol;
     }
 
-
+    //change text to info
     document.getElementById("biome").innerHTML = biome.name;
     document.getElementById("Effects").innerHTML = biome.effect;
     document.getElementById("Affixes").innerHTML = chosenAffixes;
     document.getElementById("resource").innerHTML = resource;
     document.getElementById("hazard").innerHTML = hazard;
     document.getElementById("gameBoards").innerHTML = board;
-
-    // render(resources);
-    // document.getElementById("D3").innerHTML = "x";
-    // document.getElementById("A1").innerHTML = "o";
 
   }
 
