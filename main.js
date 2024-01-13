@@ -104,15 +104,16 @@ function boop() {
     }
     
     if(numAffixes >= 1){
-      let num = Affixes[Math.floor(Math.random()*biome.affix.length)];
-      chosenAffixes.push(num);
+      let roll = Affixes[Math.floor(Math.random()*biome.affix.length)];
+      chosenAffixes.push(roll);
     }
     if(numAffixes == 2){
       chosenAffixes.push(Affixes[Math.floor(Math.random()*biome.affix.length)]);
       while(chosenAffixes[1] == chosenAffixes[0]){
-          num = Math.floor(Math.random()*biome.affix.length);
-          chosenAffixes[1] = num;
+          roll = Affixes[Math.floor(Math.random()*biome.affix.length)];
+          chosenAffixes[1] = roll;
       }
+      chosenAffixes[1] = " " + chosenAffixes[1];
     }
     chosenAffixes
     
