@@ -8,12 +8,12 @@ function boop() {
     let chosenAffixes = [];
     const boardSizes = new Map([
       ["A", [11,11]],
-      ["B", [13,13]],
-      ["C", [15,15]],
-      ["D", [15,15]],
+      ["B", [12,12]],
+      ["C", [13,13]],
+      ["D", [14,14]],
       ["E", [15,15]],
       ["F", [15,15]],
-      ["G", [11, 20]]
+      ["G", [20, 11]]
     ]);
 
     //const biomes = ["Arid Wasteland", "Lush Rainforest", "Frozen Tundra", "Volcanic Caldera", "Underwater Abyss", 
@@ -197,7 +197,6 @@ function boop() {
       document.getElementById(row + column).innerHTML = resources[resources.length - 1].symbol;
     }
 
-    //remove unused rows and columns
 
     //change text to info
     document.getElementById("biome").innerHTML = biome.name;
@@ -218,4 +217,8 @@ function boop() {
   function Item(symbol, coordinates){
     this.symbol = symbol;
     this.coordinates = coordinates;
+  }
+
+  function coord(coordinates){
+    return String.fromCharCode(coordinates[0] + 65).toUpperCase() + coordinates[1];
   }
